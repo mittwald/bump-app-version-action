@@ -16,5 +16,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.mode }}
-    - ${{ inputs.tag }}
+    - ${{ inputs.version }}
     - ${{ inputs.chartYaml }}

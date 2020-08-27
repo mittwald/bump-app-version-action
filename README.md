@@ -10,9 +10,9 @@ Optionally, the new chart version can be published to [mittwald/helm-charts](htt
 
 If `mode` is `publish`, a pipeline in [mittwald/helm-charts](https://github.com/mittwald/helm-charts) will be triggered to publish the new chart version to [helm.mittwald.de](helm.mittwald.de).
 
-### `tag`
+### `version`
 
-`tag` is the version to use for `version` and `appVersion` in the `Chart.yaml`.
+`version` is the version to use for `version` and `appVersion` in the `Chart.yaml`.
 
 ### `chartYaml`
 
@@ -43,7 +43,7 @@ jobs:
         uses: mittwald/bump-app-version-action@v0.1.0
         with:
           mode: 'publish'
-          tag: "${GITHUB_REF##*/}"
+          version: "${GITHUB_REF##*/}"
           chartYaml: './deploy/chart/Chart.yaml'
         env:
           GITHUB_TOKEN: "${{ secrets.githubToken }}"
