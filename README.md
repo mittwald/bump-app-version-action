@@ -4,6 +4,8 @@ Github Action to bump `version` and `appVersion` in Mittwald Helm Charts.
 
 Optionally, the new chart version can be published to [mittwald/helm-charts](https://github.com/mittwald/helm-charts).
 
+The chart version is automatically determined using the `GITHUB_REF` environment variable: `TAG="${GITHUB_REF##*/}"`.
+
 ## Inputs
 
 ### `mode`
@@ -40,10 +42,9 @@ jobs:
   release:
     steps:
       - name: Run chart version bump
-        uses: mittwald/bump-app-version-action@v0.1.0
+        uses: mittwald/bump-app-version-action@v0.2.0
         with:
           mode: 'publish'
-          version: "${GITHUB_REF##*/}"
           chartYaml: './deploy/chart/Chart.yaml'
         env:
           GITHUB_TOKEN: "${{ secrets.githubToken }}"

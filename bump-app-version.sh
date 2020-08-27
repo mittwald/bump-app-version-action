@@ -9,8 +9,9 @@ fi
 
 ## avoid noisy shellcheck warnings
 MODE="${1}"
-TAG="${2:-v0.0.0}"
-CHART_YAML="${3}"
+CHART_YAML="${2}"
+
+TAG="${GITHUB_REF##*/}"
 
 ## make this script a bit more re-usable
 GIT_REPOSITORY="github.com/${GITHUB_REPOSITORY}"
