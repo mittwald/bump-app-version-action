@@ -10,8 +10,7 @@ fi
 ## avoid noisy shellcheck warnings
 MODE="${1}"
 TAG="${2:-v0.0.0}"
-GITHUB_TOKEN="${3:-dummy}"
-CHART_YAML="${4}"
+CHART_YAML="${3}"
 
 ## make this script a bit more re-usable
 GIT_REPOSITORY="github.com/${GITHUB_REPOSITORY}"
