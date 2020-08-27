@@ -1,0 +1,20 @@
+name: 'Bump App Version'
+description: Update version and appVersion in a helm chart with the current tag.
+inputs:
+  mode:
+    description: The action will only publish to the chart repo if this is set to 'publish'.
+    required: false
+    default: 'publish'
+  version:
+    description: Version to set as version and appVersion. This is usually the current tag.
+    required: true
+  chartYaml:
+    description: Location of the helm chart `Chart.yaml` relative to the repo root.
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.mode }}
+    - ${{ inputs.tag }}
+    - ${{ inputs.chartYaml }}
