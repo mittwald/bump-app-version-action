@@ -63,7 +63,7 @@ if [[ ! -x "$(command -v helm)" ]]; then
     HELM_BIN="${GENERIC_BIN_DIR}/helm"
 
     curl -sS -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-    sudo chmod +x "${HELM_BIN}"
+    chmod +x "${HELM_BIN}"
 fi
 
 ## Install Helm push
