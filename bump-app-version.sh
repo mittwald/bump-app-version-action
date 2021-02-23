@@ -16,6 +16,7 @@ TAG="${GITHUB_REF##*/}"
 GITHUB_TOKEN="${GITHUB_TOKEN:-dummy}"
 HELM_REPO_USERNAME="${HELM_REPO_USERNAME:-dummy}"
 HELM_REPO_PASSWORD="${HELM_REPO_PASSWORD:-dummy}"
+GENERIC_BIN_DIR="/usr/local/bin"
 
 ## make this script a bit more re-usable
 GIT_REPOSITORY="github.com/${GITHUB_REPOSITORY}"
@@ -55,6 +56,18 @@ git commit -m "Bump chartVersion and appVersion to '${TAG}'"
 
 ## rebase
 git pull --rebase publisher master
+
+## Install Helm
+if [[ ! -x "$(command -v helm)" ]]; then
+    export HELM_INSTALL_DIR="${GENERIC_BIN_DIR}"
+    HELM_BIN="${GENERIC_BIN_DIR}/helm"
+
+    curl -sS -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    sudo chmod +x "${HELM_BIN}"
+fi
+
+## Install Helm push
+helm plugin install https://github.com/chartmuseum/helm-push.git
 
 if [[ "${MODE}" == "publish" ]]; then
 
