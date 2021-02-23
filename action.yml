@@ -1,5 +1,5 @@
 name: 'Bump App Version'
-description: Update version and appVersion in a helm chart with the current tag.
+description: Update chartVersion and appVersion in a helm chart with the current tag.
 inputs:
   mode:
     description: The action will only publish to the chart repo if this is set to 'publish'.
