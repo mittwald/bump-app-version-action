@@ -1,8 +1,8 @@
 # Bump App Version Action
 
-Github Action to bump `version` and `appVersion` in Mittwald Helm Charts.
+Github Action to bump `chartVersion` and `appVersion` in Mittwald Helm Charts.
 
-Optionally, the new chart version can be published to [mittwald/helm-charts](https://github.com/mittwald/helm-charts).
+Optionally, the new chart version can be published to [helm.mittwald.de](helm.mittwald.de).
 
 The chart version is automatically determined using the `GITHUB_REF` environment variable: `TAG="${GITHUB_REF##*/}"`.
 
@@ -10,7 +10,7 @@ The chart version is automatically determined using the `GITHUB_REF` environment
 
 ### `mode`
 
-If `mode` is `publish`, a pipeline in [mittwald/helm-charts](https://github.com/mittwald/helm-charts) will be triggered to publish the new chart version to [helm.mittwald.de](helm.mittwald.de).
+If `mode` is `publish`, the resulting pipeline will be triggered to publish the new chart version to [helm.mittwald.de](helm.mittwald.de).
 
 ### `version`
 
@@ -24,7 +24,15 @@ Location to the `Chart.yaml` of the helm-chart relative to the repository root.
 
 ### `GITHUB_TOKEN`
 
-Token to pull/push to the repo this action runs in, as well as to trigger a pipeline in [mittwald/helm-charts](https://github.com/mittwald/helm-charts).
+Token to pull/push to the repo this action runs in.
+
+### `HELM_REPO_USERNAME`
+
+Username to access the helm chart repository.
+
+### `HELM_REPO_USERNAME`
+
+Password to access the helm chart repository.
 
 ## Usage
 
@@ -42,7 +50,7 @@ jobs:
   release:
     steps:
       - name: Run chart version bump
-        uses: mittwald/bump-app-version-action@v0.2.0
+        uses: mittwald/bump-app-version-action@v0.2.x
         with:
           mode: 'publish'
           chartYaml: './deploy/chart/Chart.yaml'
