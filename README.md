@@ -50,10 +50,11 @@ jobs:
   release:
     steps:
       - name: Run chart version bump
-        uses: mittwald/bump-app-version-action@v0.2.x
+        uses: mittwald/bump-app-version-action@v1
         with:
           mode: 'publish'
           chartYaml: './deploy/chart/Chart.yaml'
         env:
           GITHUB_TOKEN: "${{ secrets.githubToken }}"
+          HELM_REPO_PASSWORD: "${{ secrets.HELM_REPO_PASSWORD }}"
 ```
