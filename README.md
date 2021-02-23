@@ -58,3 +58,14 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.githubToken }}"
           HELM_REPO_PASSWORD: "${{ secrets.HELM_REPO_PASSWORD }}"
 ```
+
+## Contributing
+New releases are always published as `v1` beside their unique version number.
+This allows us to always use the latest version of this action without updating
+every workflow that uses this action.
+
+```
+git tag v1 --force
+git tag v0.3.x
+git push --tags --force
+```
