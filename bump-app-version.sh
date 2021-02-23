@@ -25,6 +25,9 @@ GIT_REPOSITORY="github.com/${GITHUB_REPOSITORY}"
 TIMESTAMP="$(date +%s )"
 TMP_DIR="/tmp/${TIMESTAMP}"
 
+export HELM_REPO_USERNAME
+export HELM_REPO_PASSWORD
+
 ## set up Git-User
 git config --global user.name "Mittwald Machine"
 git config --global user.email "opensource@mittwald.de"
