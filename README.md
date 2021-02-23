@@ -30,7 +30,7 @@ Token to pull/push to the repo this action runs in.
 
 Username to access the helm chart repository.
 
-### `HELM_REPO_USERNAME`
+### `HELM_REPO_PASSWORD`
 
 Password to access the helm chart repository.
 
