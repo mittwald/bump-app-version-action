@@ -69,9 +69,6 @@ if [[ ! -x "$(command -v helm)" ]]; then
     chmod +x "${HELM_BIN}"
 fi
 
-## Install Helm push
-helm plugin install https://github.com/chartmuseum/helm-push.git
-
 if [[ "${MODE}" == "publish" ]]; then
 
     ## publish changes
