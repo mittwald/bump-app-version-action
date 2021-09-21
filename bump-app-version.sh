@@ -27,7 +27,6 @@ TMP_DIR="/tmp/${TIMESTAMP}"
 
 export HELM_REPO_USERNAME
 export HELM_REPO_PASSWORD
-export HELM_EXPERIMENTAL_OCI=1
 
 ## set up Git-User
 git config --global user.name "Mittwald Machine"
@@ -66,9 +65,12 @@ if [[ ! -x "$(command -v helm)" ]]; then
     export HELM_INSTALL_DIR="${GENERIC_BIN_DIR}"
     HELM_BIN="${GENERIC_BIN_DIR}/helm"
 
-    curl -sS -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    curl -sS -L https://raw.githubusercontent.com/helm/helm/v3.6.3/scripts/get-helm-3 | bash
     chmod +x "${HELM_BIN}"
 fi
+
+## Install Helm push
+helm plugin install https://github.com/chartmuseum/helm-push.git
 
 if [[ "${MODE}" == "publish" ]]; then
 
