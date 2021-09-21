@@ -27,6 +27,7 @@ TMP_DIR="/tmp/${TIMESTAMP}"
 
 export HELM_REPO_USERNAME
 export HELM_REPO_PASSWORD
+export HELM_EXPERIMENTAL_OCI=1
 
 ## set up Git-User
 git config --global user.name "Mittwald Machine"
