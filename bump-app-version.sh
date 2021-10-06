@@ -65,7 +65,7 @@ if [[ ! -x "$(command -v helm)" ]]; then
     export HELM_INSTALL_DIR="${GENERIC_BIN_DIR}"
     HELM_BIN="${GENERIC_BIN_DIR}/helm"
 
-    curl -sS -L https://raw.githubusercontent.com/helm/helm/v3.6.3/scripts/get-helm-3 | bash
+    curl -sS -L https://raw.githubusercontent.com/helm/helm/v3.6.3/scripts/get-helm-3 | bash -s - --version v3.6.3
     chmod +x "${HELM_BIN}"
 fi
 
