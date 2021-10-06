@@ -79,7 +79,7 @@ if [[ "${MODE}" == "publish" ]]; then
 
     ## upload chart
     helm repo add mittwald https://helm.mittwald.de --force-update
-    helm push "${CHART_PATH}" mittwald
+    helm cm-push "${CHART_PATH}" mittwald
 
 fi
 
