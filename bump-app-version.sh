@@ -45,12 +45,12 @@ sed -i "s#^version:.*#version: ${TAG/v/}#g" "${CHART_YAML}"
 ## useful for debugging purposes
 git status
 
+## Add new remote with credentials baked in url
+git remote add publisher "https://mittwald-machine:${GITHUB_TOKEN}@${GIT_REPOSITORY}"
+
 CHANGE_COUNT=$(git status --porcelain | wc -l)
 
 if [[ ${CHANGE_COUNT} -gt 0 ]] ; then
-    ## Add new remote with credentials baked in url
-    git remote add publisher "https://mittwald-machine:${GITHUB_TOKEN}@${GIT_REPOSITORY}"
-
     ## add and commit changed file
     git add -A
 
