@@ -45,20 +45,24 @@ sed -i "s#^version:.*#version: ${TAG/v/}#g" "${CHART_YAML}"
 ## useful for debugging purposes
 git status
 
-## Add new remote with credentials baked in url
-git remote add publisher "https://mittwald-machine:${GITHUB_TOKEN}@${GIT_REPOSITORY}"
+CHANGE_COUNT=$(git status --porcelain | wc -l)
 
-## add and commit changed file
-git add -A
+if [[ ${CHANGE_COUNT} -gt 0 ]] ; then
+    ## Add new remote with credentials baked in url
+    git remote add publisher "https://mittwald-machine:${GITHUB_TOKEN}@${GIT_REPOSITORY}"
 
-## useful for debugging purposes
-git status
+    ## add and commit changed file
+    git add -A
 
-## stage changes
-git commit -m "Bump chartVersion and appVersion to '${TAG}'"
+    ## useful for debugging purposes
+    git status
 
-## rebase
-git pull --rebase publisher master
+    ## stage changes
+    git commit -m "Bump chartVersion and appVersion to '${TAG}'"
+
+    ## rebase
+    git pull --rebase publisher master
+fi
 
 ## Install Helm
 if [[ ! -x "$(command -v helm)" ]]; then
